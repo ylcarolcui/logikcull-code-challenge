@@ -2,10 +2,8 @@ function longestSubstring(array) {
 	const finalResult = { letter: '', length: 0 };
 	let maxLetter = '';
 	let maxNumber = 0;
-	const charMap = {};
-	let arrayResult = [];
 
-  // permutation function using recursion
+	// permutation function using recursion
 	function permutation(array) {
 		let result = [];
 		if (array.length === 0) return [];
@@ -18,7 +16,7 @@ function longestSubstring(array) {
 				const permutedArray = [currentNum]
 					.concat(remainingNumsPermuted[j])
 					.join('')
-          //use regex to match letter followed by same letter
+					//use regex to match letter followed by same letter
 					.match(/([a-zA-Z])\1*/g);
 
 				result.push(permutedArray);
@@ -27,15 +25,11 @@ function longestSubstring(array) {
 
 		return result;
 	}
-	// push permutation result to arrayResult
-	for (let i = 0; i < permutation(array).length; i++) {
-		arrayResult.push(permutation(array)[i]);
-	}
 
-  // combine arrayResult and split to make newArray
-	const newArray = arrayResult.join(',').split(',');
+	// combine permutation result and split to make newArray
+	const newArray = permutation(array).join(',').split(',');
 
-  // find element has maximum length from newArray
+	// find element has maximum length from newArray
 	for (let i = 0; i < newArray.length; i++) {
 		if (newArray[i].length > maxNumber) {
 			maxNumber = newArray[i].length;
