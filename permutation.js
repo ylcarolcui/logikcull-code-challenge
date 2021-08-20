@@ -37,8 +37,8 @@ function longestSubstring(array) {
 		}
 	}
 
-	finalResult['letter'] = maxLetter;
-	finalResult['length'] = maxNumber;
+	finalResult.letter = maxLetter;
+	finalResult.length = maxNumber;
 	return finalResult;
 }
 
