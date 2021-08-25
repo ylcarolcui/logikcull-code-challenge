@@ -6,6 +6,7 @@ function longestSubstring(array) {
 	// permutation function using recursion
 	function permutation(array) {
 		let result = [];
+		// set conditions when recursion should stop
 		if (array.length === 0) return [];
 		if (array.length === 1) return [array];
 		for (let i = 0; i < array.length; i++) {
@@ -18,11 +19,10 @@ function longestSubstring(array) {
 					.join('')
 					//use regex to match letter followed by same letter
 					.match(/([a-zA-Z])\1*/g);
-
+        // console.log(permutedArray)
 				result.push(permutedArray);
 			}
 		}
-
 		return result;
 	}
 

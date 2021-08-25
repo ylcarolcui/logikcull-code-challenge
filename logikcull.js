@@ -21,20 +21,20 @@ function longestSubstring(array) {
 
 	const n = array.length;
 	let consis = 0;
-	// create new array that able to mutate and not mutate original array
+	// create new array by using spread operator so it won't mutate original array
 	let newArray = [...array];
 	for (let i = 0; i < n; i++) {
 		// filter each array with maxLetter and find array has same length as consistent string
 		let filtered = array[i].split('').filter((letter) => letter == maxLetter);
 		if (filtered.length == array[i].length) {
 			consis += filtered.length;
-			// create array without consistent string
-			// newArray = array.filter((string) => string !== array[i]);
-			newArray.splice(i, 1);
+			// remove consis from Array to find prefix and suffix maxLetter
+			newArray = newArray.filter((string)=> string != array[i])
+			
 		}
 	}
-	console.log(newArray);
-	// find max number of prefix and suffix maxLetter
+	// console.log(newArray);
+	// find max number in prefix and suffix
 	let suffix = [];
 	let prefix = [];
 	for (let i = 0; i < newArray.length; i++) {
