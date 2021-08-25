@@ -33,13 +33,10 @@ function longestSubstring(array) {
 			
 		}
 	}
-	// console.log(newArray);
 	// find max number in prefix and suffix
-	let suffix = [];
-	let prefix = [];
+	let preNumber = 0;
+	let sufNumber = 0;
 	for (let i = 0; i < newArray.length; i++) {
-		let preNumber = 0;
-		let sufNumber = 0;
 
 		// find number of suffix maxLetter
 		for (let j = newArray[i].length - 1; j >= 0; j--) {
@@ -50,7 +47,6 @@ function longestSubstring(array) {
 				break;
 			}
 		}
-		suffix.push(sufNumber);
 
 		// find number of prefix maxLetter
 		for (let j = 0; j < newArray[i].length; j++) {
@@ -61,28 +57,10 @@ function longestSubstring(array) {
 				break;
 			}
 		}
-		prefix.push(preNumber);
 	}
-
-	// find max suffix number
-	let maxSuffix = 0;
-	let index;
-	for (let i = 0; i < suffix.length; i++) {
-		if (suffix[i] > maxSuffix) {
-			maxSuffix = suffix[i];
-			index = i;
-		}
-	}
-
-	// find max prefix number
-	let maxPrefix = parseInt(
-		prefix
-			.filter((number) => prefix.indexOf(number) !== index)
-			.sort((a, b) => b - a)[0]
-	);
 
 	result['letter'] = maxLetter;
-	result['length'] = maxSuffix + consis + maxPrefix;
+	result['length'] = sufNumber + consis + preNumber;
 	return result;
 }
 console.log(longestSubstring(['aabb', 'aaaa', 'bbab']));
